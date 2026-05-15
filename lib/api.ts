@@ -10,6 +10,11 @@ export async function fetchTopPairs() {
   return res.json();
 }
 
+export async function fetchTokenDetail(address: string) {
+  const res = await fetch(`${API}/token/${address}`);
+  return res.json();
+}
+
 export async function fetchOHLCV(address: string, tf = "1h") {
   const res = await fetch(`${API}/base/pool/${address}/ohlcv?tf=${tf}`);
   return res.json();
