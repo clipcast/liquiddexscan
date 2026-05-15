@@ -2,12 +2,14 @@ import { LiquidSDK } from "liquid-sdk";
 import { createPublicClient, http } from "viem";
 import { base } from "viem/chains";
 
-const client = createPublicClient({ chain: base, transport: http() });
+const RPC_URL = process.env.RPC_URL || "https://mainnet.base.org";
+
+const client = createPublicClient({ chain: base, transport: http(RPC_URL) });
 const liquid = new LiquidSDK({ publicClient: client });
 
-let cache: any[] = [];
+let cache: TokenInfo[] = [];
 let lastFetch = 0;
-const TTL = 10_000;
+const TTL = 15_000;
 
 export interface TokenInfo {
   name: string;
@@ -24,8 +26,9 @@ export async function scanNewTokens(): Promise<TokenInfo[]> {
 
   const latest = await client.getBlockNumber();
   const fromBlock = latest - 9000n;
+
   const tokens = await liquid.getTokens({ fromBlock, toBlock: latest });
-  const blockTime = 2; // Base ~2s per block
+  const blockTime = 2;
 
   cache = tokens.map((t: any) => ({
     name: t.tokenName || "Unknown",

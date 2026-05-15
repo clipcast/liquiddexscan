@@ -1,4 +1,4 @@
-const API = "/api/v1";
+const API = "/api";
 
 export async function fetchNewTokens() {
   const res = await fetch(`${API}/new`);

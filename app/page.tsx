@@ -20,7 +20,7 @@ export default function HomePage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/api/v1/base/pairs?view=top");
+        const res = await fetch("/api/base/pairs?view=top");
         const data = await res.json();
         setPairs(data.data?.slice(0, 30) || []);
       } catch (e) {

@@ -8,7 +8,7 @@ export default function NewTokensPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/api/v1/new");
+        const res = await fetch("/api/new");
         const data = await res.json();
         setTokens(data.tokens || []);
       } catch (e) {
