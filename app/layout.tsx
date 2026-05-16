@@ -10,15 +10,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <nav className="flex items-center gap-6 px-6 h-14 border-b border-[var(--border)] bg-[var(--surface)]">
-          <a href="/" className="font-bold text-lg">🪙 LiquidDexScan</a>
-          <div className="flex gap-4 text-sm text-[var(--muted)]">
-            <a href="/">Pairs</a>
-            <a href="/new">New</a>
-            <a href="/trending">Trending</a>
-          </div>
+        <nav className="flex items-center px-4 sm:px-6 h-12 sm:h-14 border-b border-[var(--border)] bg-[var(--surface)]">
+          <a href="/" className="font-bold text-sm sm:text-lg">🪙 LiquidDexScan</a>
         </nav>
-        <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
+        <main className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">{children}</main>
       </body>
     </html>
   );

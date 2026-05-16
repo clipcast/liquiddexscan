@@ -11,6 +11,8 @@ export default function PoolDetailPage() {
   useEffect(() => {
     if (!poolAddress) return;
 
+    const isMobile = window.innerWidth < 640;
+
     // Load TradingView chart
     const script = document.createElement("script");
     script.src = "https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js";
@@ -22,7 +24,7 @@ export default function PoolDetailPage() {
         layout: { background: { type: "solid", color: "#14141a" }, textColor: "#a1a1aa" },
         grid: { vertLines: { color: "#1f1f2a" }, horzLines: { color: "#1f1f2a" } },
         width: chartRef.current.clientWidth,
-        height: 450,
+        height: isMobile ? 300 : 450,
         crosshair: { mode: 0 },
         timeScale: { timeVisible: true, borderColor: "#1f1f2a" },
       });
