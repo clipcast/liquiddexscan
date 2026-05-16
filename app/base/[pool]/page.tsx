@@ -34,7 +34,7 @@ export default function PoolDetailPage() {
 
       async function loadData() {
         try {
-          const res = await fetch(`/api/v1/base/pool/${poolAddress}/ohlcv?tf=5m`);
+          const res = await fetch(`/api/base/pool/${poolAddress}/ohlcv?tf=5m`);
           const data = await res.json();
           const ohlcv = data.data?.attributes?.ohlcv_list || [];
           // Data format: [timestamp, open, high, low, close, volume]
@@ -62,7 +62,7 @@ export default function PoolDetailPage() {
     document.head.appendChild(script);
 
     // Fetch pool name
-    fetch(`/api/v1/base/pairs?view=top`)
+    fetch(`/api/base/pairs?view=top`)
       .then(r => r.json())
       .then(data => {
         const pool = (data.data || []).find((p: any) => p.id?.includes(poolAddress));

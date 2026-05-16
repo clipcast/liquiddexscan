@@ -9,7 +9,7 @@ export default function TrendingPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/api/v1/base/pairs?view=top");
+        const res = await fetch("/api/base/pairs?view=top");
         const data = await res.json();
         const items = (data.data || []).slice(0, 30);
         // Sort by trending formula (1h vol / 24h vol)
